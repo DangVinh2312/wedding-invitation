@@ -54,7 +54,7 @@ function BrideGloomSection() {
       </BaseSection>
       <BaseSection {...{ h: 'auto', hiddenFrom: 'sm' }}>
         <Stack flex={1} bg='blushPink.1' justify='flex-start' align='center' gap='sm' pb='xl'>
-          <Title order={2} size='3rem' ff='MeaCulpa-Regular' p='xl'>
+          <Title order={2} size='2.5rem' ff='MeaCulpa-Regular' p='xl'>
             Cô dâu và Chú rể
           </Title>
           <Stack gap='xl' justify='center' align='center'>
