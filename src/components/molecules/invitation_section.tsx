@@ -26,7 +26,7 @@ function InvitationSection() {
 
   return (
     <BaseSection>
-      <Stack flex={1} justify='flex-start' align='center' gap='xl'>
+      <Stack visibleFrom='sm' flex={1} justify='flex-start' align='center' gap='xl'>
         <Title order={2} size='4rem' ff='MeaCulpa-Regular' p='xl'>
           Trân trọng kính mời
         </Title>
@@ -53,6 +53,50 @@ function InvitationSection() {
                 <Group align='center'>
                   <IconMapPin />
                   <Text size='xl'>{data.address}</Text>
+                </Group>
+                <Box>
+                  <Button variant='outline' color='red.8' leftSection={<IconMapSearch />}>
+                    Chỉ đường
+                  </Button>
+                </Box>
+              </Stack>
+            </Timeline.Item>
+          ))}
+        </Timeline>
+      </Stack>
+      <Stack hiddenFrom='sm' flex={1} justify='flex-start' align='center' gap='xl' px='sm'>
+        <Title order={2} size='3rem' ff='MeaCulpa-Regular' p='xl'>
+          Trân trọng kính mời
+        </Title>
+        <Timeline bulletSize={30} color='red' active={invitationData.length - 1}>
+          {invitationData.map((data, index) => (
+            <Timeline.Item
+              key={`${data.title}-${index}`}
+              bullet={data.timeLineIcon}
+              title={
+                <Title order={3} size='1.5rem'>
+                  {data.title}
+                </Title>
+              }
+            >
+              <Stack gap='xs'>
+                <Group align='center'>
+                  <Group align='center'>
+                    <IconCalendarWeek />
+                  </Group>
+                  <Text size='sm'>{data.date}</Text>
+                </Group>
+                <Group align='center'>
+                  <Group align='center'>
+                    <IconClockHour10 />
+                  </Group>
+                  <Text size='sm'>{data.time}</Text>
+                </Group>
+                <Group align='center' wrap='nowrap'>
+                  <Group align='center'>
+                    <IconMapPin />
+                  </Group>
+                  <Text size='sm'>{data.address}</Text>
                 </Group>
                 <Box>
                   <Button variant='outline' color='red.8' leftSection={<IconMapSearch />}>

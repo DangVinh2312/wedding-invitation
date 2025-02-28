@@ -1,6 +1,6 @@
 import { ActionIcon, Box, Button, Group, Stack, Text, TextInput, Title, Transition } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
-import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons-react';
+import { IconArrowNarrowLeft, IconArrowNarrowRight, IconGift } from '@tabler/icons-react';
 import { useState } from 'react';
 import BaseSection from '../atoms/base_section';
 
@@ -12,7 +12,7 @@ function RegisterFormSection() {
 
   return (
     <BaseSection>
-      <Group flex={1} gap={0} bg='red.4' justify='center' align='center' pos='relative'>
+      <Group visibleFrom='sm' flex={1} gap={0} bg='red.4' justify='center' align='center' pos='relative'>
         <Stack
           style={{
             visibility: activeDebounce === 0 ? 'visible' : 'hidden',
@@ -116,6 +116,61 @@ function RegisterFormSection() {
           )}
         </Transition>
       </Group>
+      <Stack hiddenFrom='sm' flex={1} gap={0} bg='red.4' justify='center' align='center' pos='relative'>
+        <Transition transition='fade' duration={transitionDuration} timingFunction='ease' mounted={activeSection === 0}>
+          {(transitionStyle) => (
+            <Stack style={transitionStyle} justify='flex-start' align='center' gap='xl' flex={1}>
+              <Title order={2} c='white' size='3rem' ff='MeaCulpa-Regular' p='xl'>
+                Tham dự đám cưới
+              </Title>
+              <Stack flex={1} w='100%' p='xl' align='center' gap='xl'>
+                <TextInput
+                  withAsterisk
+                  size='xl'
+                  label='Họ và tên'
+                  labelProps={{
+                    c: 'white',
+                  }}
+                  w='100%'
+                />
+                <TextInput
+                  withAsterisk
+                  size='xl'
+                  label='Số điện thoại'
+                  labelProps={{
+                    c: 'white',
+                  }}
+                  w='100%'
+                />
+                <Button size='lg' variant='outline' color='white'>
+                  Đăng ký
+                </Button>
+                <ActionIcon size='xl' variant='outline' color='white' onClick={() => setActiveSection(1)}>
+                  <IconGift />
+                </ActionIcon>
+              </Stack>
+            </Stack>
+          )}
+        </Transition>
+        <Transition transition='fade' duration={transitionDuration} timingFunction='ease' mounted={activeSection === 1}>
+          {(transitionStyle) => (
+            <Stack style={transitionStyle} justify='flex-start' align='center' gap='xl' px='sm' flex={1}>
+              <Stack align='center' gap={0}>
+                <Title order={2} c='white' size='3rem' ff='MeaCulpa-Regular' p='xl'>
+                  Hộp mừng cưới
+                </Title>
+                <Text ff='monospace' c='white' size='sm'>
+                  Nếu có thể, bạn hãy tới tham dự Đám cưới, chung vui và Mừng cưới trực tiếp cho chúng mình. Cảm ơn bạn
+                  rất nhiều!
+                </Text>
+              </Stack>
+              <ActionIcon size='xl' variant='outline' color='white' onClick={() => setActiveSection(0)}>
+                <IconArrowNarrowLeft />
+              </ActionIcon>
+            </Stack>
+          )}
+        </Transition>
+      </Stack>
     </BaseSection>
   );
 }
