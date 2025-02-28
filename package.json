@@ -12,6 +12,7 @@
   "dependencies": {
     "@mantine/core": "^7.17.0",
     "@mantine/hooks": "^7.17.0",
+    "@supabase/supabase-js": "1.13.1",
     "@tabler/icons-react": "^3.30.0",
     "dayjs": "^1.11.13",
     "react": "^19.0.0",

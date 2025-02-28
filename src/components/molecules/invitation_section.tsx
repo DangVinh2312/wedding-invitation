@@ -11,7 +11,7 @@ function InvitationSection() {
       date: 'Chủ Nhật, ngày 09 tháng 03 năm 2025',
       time: '10 giờ 00',
       address: 'Nhà trai - Số 18 ngách 426/48 đường Láng, Đống Đa, Hà Nội',
-      location: 'https://goo.gl/maps/1J1J1J1J1J1J1J1',
+      location: `https://www.google.com/maps/place/21%C2%B000'38.4%22N+105%C2%B048'47.6%22E/@21.010669,105.813214,17z/data=!3m1!4b1!4m4!3m3!8m2!3d21.010669!4d105.813214?entry=ttu&g_ep=EgoyMDI1MDIyNS4wIKXMDSoASAFQAw%3D%3D`,
       timeLineIcon: <HeartsIcon />,
     },
     {
@@ -19,7 +19,8 @@ function InvitationSection() {
       date: 'Chủ Nhật, ngày 09 tháng 03 năm 2025',
       time: '11 giờ 00',
       address: 'Tầng 1 trung tâm tổ chức tiệc cưới và sự kiện Queen Bee - 20 Láng Hạ, Đống Đa, Hà Nội',
-      location: 'https://goo.gl/maps/1J1J1J1J1J1J1J1J1',
+      location:
+        'https://www.google.com/maps/place/Queen+Bee+Luxury/@21.0162328,105.8144029,17z/data=!3m1!4b1!4m6!3m5!1s0x3135ab63791d9ee5:0x9e6cca93a08ef5c!8m2!3d21.0162328!4d105.8144029!16s%2Fg%2F11cmpb3fnn?hl=vi&entry=ttu&g_ep=EgoyMDI1MDIyNS4wIKXMDSoASAFQAw%3D%3D',
       timeLineIcon: <MarriageRingIcon />,
     },
   ];
@@ -99,7 +100,13 @@ function InvitationSection() {
                   <Text size='sm'>{data.address}</Text>
                 </Group>
                 <Box>
-                  <Button variant='outline' color='red.8' leftSection={<IconMapSearch />}>
+                  <Button
+                    component='a'
+                    href={data.location}
+                    variant='outline'
+                    color='red.8'
+                    leftSection={<IconMapSearch />}
+                  >
                     Chỉ đường
                   </Button>
                 </Box>

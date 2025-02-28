@@ -1,7 +1,9 @@
-import { ActionIcon, Box, Button, Group, Stack, Text, TextInput, Title, Transition } from '@mantine/core';
+import { ActionIcon, Box, Button, Group, Image, Stack, Text, TextInput, Title, Transition } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
-import { IconArrowNarrowLeft, IconArrowNarrowRight, IconGift } from '@tabler/icons-react';
-import { useState } from 'react';
+import { IconArrowNarrowLeft, IconArrowNarrowRight, IconGift, IconPhone, IconUser } from '@tabler/icons-react';
+import { useRef, useState } from 'react';
+import supabase from '../../api/request';
+import qr from '../../assets/images/qr.jpeg';
 import BaseSection from '../atoms/base_section';
 
 const transitionDuration = 500;
@@ -9,6 +11,26 @@ const transitionDuration = 500;
 function RegisterFormSection() {
   const [activeSection, setActiveSection] = useState(0);
   const [activeDebounce] = useDebouncedValue(activeSection, transitionDuration);
+
+  const nameRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
+
+  async function handleSubmit() {
+    if (!nameRef.current?.value || !phoneRef.current?.value) {
+      return;
+    }
+    const { error } = await supabase.from('participants').insert({
+      name: nameRef.current.value,
+      phone: phoneRef.current.value,
+    });
+
+    if (error) {
+      console.error(error);
+    }
+    nameRef.current.value = '';
+    phoneRef.current.value = '';
+    alert('Cảm ơn bạn đã đăng ký tham dự!');
+  }
 
   return (
     <BaseSection>
@@ -28,6 +50,7 @@ function RegisterFormSection() {
           </Title>
           <Stack flex={1} w='100%' p='xl' align='center' gap='xl'>
             <TextInput
+              ref={nameRef}
               withAsterisk
               size='xl'
               label='Họ và tên'
@@ -37,6 +60,7 @@ function RegisterFormSection() {
               w='100%'
             />
             <TextInput
+              ref={phoneRef}
               withAsterisk
               size='xl'
               label='Số điện thoại'
@@ -45,7 +69,7 @@ function RegisterFormSection() {
               }}
               w='100%'
             />
-            <Button size='lg' variant='outline' color='white'>
+            <Button size='lg' variant='outline' color='white' onClick={() => handleSubmit()}>
               Đăng ký
             </Button>
           </Stack>
@@ -124,24 +148,28 @@ function RegisterFormSection() {
             </Title>
             <Stack flex={1} w='100%' p='xl' align='center' gap='xl'>
               <TextInput
+                ref={nameRef}
                 withAsterisk
                 size='xl'
                 label='Họ và tên'
+                leftSection={<IconUser />}
                 labelProps={{
                   c: 'white',
                 }}
                 w='100%'
               />
               <TextInput
+                ref={phoneRef}
                 withAsterisk
                 size='xl'
                 label='Số điện thoại'
+                leftSection={<IconPhone />}
                 labelProps={{
                   c: 'white',
                 }}
                 w='100%'
               />
-              <Button size='lg' variant='outline' color='white'>
+              <Button size='lg' variant='outline' color='white' onClick={() => handleSubmit()}>
                 Đăng ký
               </Button>
               <ActionIcon size='xl' variant='outline' color='white' onClick={() => setActiveSection(1)}>
@@ -178,7 +206,7 @@ function RegisterFormSection() {
               gap='xl'
               px='sm'
             >
-              <Stack align='center' gap={0}>
+              <Stack align='center' justify='center' gap={0}>
                 <Title order={2} c='white' size='2.5rem' ff='MeaCulpa-Regular' p='xl'>
                   Hộp mừng cưới
                 </Title>
@@ -187,7 +215,10 @@ function RegisterFormSection() {
                   rất nhiều!
                 </Text>
               </Stack>
-              <ActionIcon size='xl' variant='outline' color='white' onClick={() => setActiveSection(0)}>
+              <Group justify='center'>
+                <Image src={qr} alt='qr' w='80%' p='sm' />
+              </Group>
+              <ActionIcon size='3rem' variant='outline' color='white' onClick={() => setActiveSection(0)}>
                 <IconArrowNarrowLeft />
               </ActionIcon>
             </Stack>
