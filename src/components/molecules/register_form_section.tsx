@@ -1,0 +1,123 @@
+import { ActionIcon, Box, Button, Group, Stack, Text, TextInput, Title, Transition } from '@mantine/core';
+import { useDebouncedValue } from '@mantine/hooks';
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons-react';
+import { useState } from 'react';
+import BaseSection from '../atoms/base_section';
+
+const transitionDuration = 500;
+
+function RegisterFormSection() {
+  const [activeSection, setActiveSection] = useState(0);
+  const [activeDebounce] = useDebouncedValue(activeSection, transitionDuration);
+
+  return (
+    <BaseSection>
+      <Group flex={1} gap={0} bg='red.4' justify='center' align='center' pos='relative'>
+        <Stack
+          style={{
+            visibility: activeDebounce === 0 ? 'visible' : 'hidden',
+          }}
+          justify='flex-start'
+          align='center'
+          gap='xl'
+          h='100%'
+          w='50%'
+        >
+          <Title order={2} c='white' size='4rem' ff='MeaCulpa-Regular' p='xl'>
+            Tham dự đám cưới
+          </Title>
+          <Stack flex={1} w='100%' p='xl' align='center' gap='xl'>
+            <TextInput
+              withAsterisk
+              size='xl'
+              label='Họ và tên'
+              labelProps={{
+                c: 'white',
+              }}
+              w='100%'
+            />
+            <TextInput
+              withAsterisk
+              size='xl'
+              label='Số điện thoại'
+              labelProps={{
+                c: 'white',
+              }}
+              w='100%'
+            />
+            <Button size='lg' variant='outline' color='white'>
+              Đăng ký
+            </Button>
+          </Stack>
+        </Stack>
+        <Stack
+          style={{
+            visibility: activeDebounce === 1 ? 'visible' : 'hidden',
+          }}
+          justify='flex-start'
+          align='center'
+          gap='xl'
+          h='100%'
+          w='50%'
+          px='sm'
+        >
+          <Stack align='center' gap={0}>
+            <Title order={2} c='white' size='4rem' ff='MeaCulpa-Regular' p='xl'>
+              Hộp mừng cưới
+            </Title>
+            <Text ff='monospace' c='white'>
+              Nếu có thể, bạn hãy tới tham dự Đám cưới, chung vui và Mừng cưới trực tiếp cho chúng mình. Cảm ơn bạn rất
+              nhiều!
+            </Text>
+          </Stack>
+        </Stack>
+        <Transition
+          mounted={true}
+          transition={{
+            in: { right: 0 },
+            out: { right: '50%' },
+            transitionProperty: 'right',
+          }}
+          duration={transitionDuration}
+          timingFunction='linear'
+          keepMounted
+        >
+          {(transitionStyle) => (
+            <Box
+              style={{ ...transitionStyle, zIndex: 1 }}
+              pos='absolute'
+              top={0}
+              bottom={0}
+              right={activeSection === 0 ? 0 : '50%'}
+              bg='red.6'
+              w='50%'
+            >
+              {activeDebounce === 0 && (
+                <Stack justify='center' align='center' gap={0} h='100%' w='100%'>
+                  <Title order={2} c='white' size='3rem' ff='MeaCulpa-Regular' fw='lighter' p='xl'>
+                    Gửi quà mừng cưới
+                  </Title>
+                  <ActionIcon variant='outline' color='white' size='6rem' onClick={() => setActiveSection(1)}>
+                    <IconArrowNarrowLeft />
+                  </ActionIcon>
+                </Stack>
+              )}
+              {activeDebounce === 1 && (
+                <Stack justify='center' align='center' gap={0} h='100%' w='100%'>
+                  <Title order={2} c='white' size='3rem' ff='MeaCulpa-Regular' fw='lighter' p='xl'>
+                    Đăng ký tham dự
+                  </Title>
+                  <ActionIcon variant='outline' color='white' size='6rem' onClick={() => setActiveSection(0)}>
+                    <IconArrowNarrowRight />
+                  </ActionIcon>
+                </Stack>
+              )}
+            </Box>
+          )}
+        </Transition>
+      </Group>
+    </BaseSection>
+  );
+}
+
+export default RegisterFormSection;

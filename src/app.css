@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'MeaCulpa-Regular';
+  src: url('./assets/fonts/Mea_Culpa/MeaCulpa-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'LavishlyYours-Regular';
+  src: url('./assets/fonts/Lavishly_Yours/LavishlyYours-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ballet';
+  src: url('./assets/fonts/Ballet/Ballet-Regular-VariableFont_opsz.ttf') format('truetype');
+}
