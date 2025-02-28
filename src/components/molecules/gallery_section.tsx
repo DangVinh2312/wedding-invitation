@@ -1,7 +1,7 @@
 import { Image, SimpleGrid, Stack, Title } from '@mantine/core';
 import BaseSection from '../atoms/base_section';
 
-const images = import.meta.glob('/images/wedding_album/*.{png,jpg,jpeg,svg,gif}');
+const images = import.meta.glob('/public/images/wedding_album/*.{png,jpg,jpeg,svg,gif}');
 
 function GallerySection() {
   return (
@@ -22,7 +22,13 @@ function GallerySection() {
         </Title>
         <Stack align='center'>
           {Object.entries(images).map(([name]) => (
-            <Image key={name} src={new URL(name, import.meta.url).href} w='80%' h={500} alt={name} />
+            <Image
+              key={name}
+              src={new URL(name, import.meta.url).href.replace('/public', '')}
+              w='80%'
+              h={500}
+              alt={name}
+            />
           ))}
         </Stack>
       </Stack>
