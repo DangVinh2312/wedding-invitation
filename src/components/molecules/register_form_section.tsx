@@ -3,7 +3,6 @@ import { useDebouncedValue } from '@mantine/hooks';
 import { IconArrowNarrowLeft, IconArrowNarrowRight, IconGift, IconPhone, IconUser } from '@tabler/icons-react';
 import { useRef, useState } from 'react';
 import supabase from '../../api/request';
-import qr from '../../assets/images/qr.jpeg';
 import BaseSection from '../atoms/base_section';
 
 const transitionDuration = 500;
@@ -216,7 +215,7 @@ function RegisterFormSection() {
                 </Text>
               </Stack>
               <Group justify='center'>
-                <Image src={qr} alt='qr' w='80%' p='sm' />
+                <Image src='/images/qr.jpeg' alt='qr' w='80%' p='sm' />
               </Group>
               <ActionIcon size='3rem' variant='outline' color='white' onClick={() => setActiveSection(0)}>
                 <IconArrowNarrowLeft />
