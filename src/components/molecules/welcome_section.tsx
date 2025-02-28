@@ -1,7 +1,12 @@
 import { Box, Button, Stack, Text, Title } from '@mantine/core';
+import { useScrollSpy } from '@mantine/hooks';
 import BaseSection from '../atoms/base_section';
 
 function WelcomeSection() {
+  const spy = useScrollSpy({
+    selector: '#invitation h2',
+  });
+
   return (
     <BaseSection bg='red.9'>
       <Stack visibleFrom='sm' justify='center' align='center' flex={1} gap='xl' c='white'>
@@ -23,7 +28,18 @@ function WelcomeSection() {
           <Text size='5rem'>Nguyễn Hà My</Text>
         </Stack>
         <Box>
-          <Button size='xl' variant='outline' color='white'>
+          <Button
+            size='xl'
+            variant='outline'
+            color='white'
+            onClick={() => {
+              if (spy.data && spy.data.length > 0) {
+                spy.data[0].getNode().scrollIntoView({
+                  behavior: 'smooth',
+                });
+              }
+            }}
+          >
             Xem thiệp mời
           </Button>
         </Box>
@@ -47,7 +63,18 @@ function WelcomeSection() {
           <Text size='2rem'>Nguyễn Hà My</Text>
         </Stack>
         <Box>
-          <Button size='md' variant='outline' color='white'>
+          <Button
+            size='md'
+            variant='outline'
+            color='white'
+            onClick={() => {
+              if (spy.data && spy.data.length > 1) {
+                spy.data[1].getNode().scrollIntoView({
+                  behavior: 'smooth',
+                });
+              }
+            }}
+          >
             Xem thiệp mời
           </Button>
         </Box>

@@ -58,10 +58,10 @@ function BrideGloomSection() {
             Cô dâu và Chú rể
           </Title>
           <Stack gap='xl' justify='center' align='center'>
-            <Stack justify='center' align='center' gap='sm'>
+            <Stack justify='center' align='center' gap='sm' w='70%'>
               <Card shadow='sm' padding='lg' radius='md' withBorder>
                 <Card.Section p='md'>
-                  <Image src='/images/bride.jpeg' height={300} alt='bride' />
+                  <Image src='/images/bride.jpeg' alt='bride' />
                 </Card.Section>
               </Card>
               <Stack gap='sm'>
@@ -74,10 +74,10 @@ function BrideGloomSection() {
               </Stack>
             </Stack>
             <IconHeart size='5rem' color='white' stroke={1} />
-            <Stack justify='center' align='center' gap='sm'>
+            <Stack justify='center' align='center' gap='sm' w='70%'>
               <Card shadow='sm' padding='lg' radius='md' withBorder>
                 <Card.Section p='md'>
-                  <Image src='/images/gloom.jpeg' height={300} alt='gloom' />
+                  <Image src='/images/gloom.jpeg' alt='gloom' />
                 </Card.Section>
               </Card>
               <Stack gap='sm'>

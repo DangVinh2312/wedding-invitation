@@ -65,7 +65,7 @@ function InvitationSection() {
         </Timeline>
       </Stack>
       <Stack hiddenFrom='sm' flex={1} justify='flex-start' align='center' gap='xl' px='sm'>
-        <Title order={2} size='3rem' ff='MeaCulpa-Regular' p='xl'>
+        <Title order={2} size='2.5rem' ff='MeaCulpa-Regular' p='xl'>
           Trân trọng kính mời
         </Title>
         <Timeline bulletSize={30} color='red' active={invitationData.length - 1}>

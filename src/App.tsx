@@ -33,22 +33,24 @@ const theme = createTheme({
   },
 });
 
-function App() {
-  const sections = [
-    { id: 'welcome', component: <WelcomeSection /> },
-    { id: 'invitation', component: <InvitationSection /> },
-    { id: 'bride-gloom', component: <BrideGloomSection /> },
-    { id: 'gallery', component: <GallerySection /> },
-    { id: 'register', component: <RegisterFormSection /> },
-    { id: 'thanks', component: <ThanksSection /> },
-  ];
+const sections = [
+  { id: 'welcome', component: <WelcomeSection /> },
+  { id: 'invitation', component: <InvitationSection /> },
+  { id: 'bride-gloom', component: <BrideGloomSection /> },
+  { id: 'gallery', component: <GallerySection /> },
+  { id: 'register', component: <RegisterFormSection /> },
+  { id: 'thanks', component: <ThanksSection /> },
+];
 
+function App() {
   return (
     <MantineProvider theme={theme}>
       <ScrollArea style={{ height: '100vh', width: '100vw' }}>
         <Stack pos='relative' gap={0}>
           {sections.map(({ id, component }) => (
-            <Box key={id}>{component}</Box>
+            <Box key={id} id={id}>
+              {component}
+            </Box>
           ))}
         </Stack>
       </ScrollArea>
