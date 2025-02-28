@@ -1,7 +1,7 @@
 import { Image, SimpleGrid, Stack, Title } from '@mantine/core';
 import BaseSection from '../atoms/base_section';
 
-const images = import.meta.glob('../../assets/images/wedding_album/*.{png,jpg,jpeg,svg,gif}');
+const images = import.meta.glob('/public/images/wedding_album/*.{png,jpg,jpeg,svg,gif}');
 
 function GallerySection() {
   return (
