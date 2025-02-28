@@ -2,12 +2,12 @@ import '@mantine/core/styles.css';
 import './app.css';
 
 import { Box, createTheme, MantineProvider, ScrollArea, Stack } from '@mantine/core';
+import BrideGloomSection from './components/molecules/bride_gloom_section';
 import GallerySection from './components/molecules/gallery_section';
 import InvitationSection from './components/molecules/invitation_section';
 import RegisterFormSection from './components/molecules/register_form_section';
 import ThanksSection from './components/molecules/thanks_section';
 import WelcomeSection from './components/molecules/welcome_section';
-import BrideGloomSection from './components/molecules/bride_gloom_section';
 
 const theme = createTheme({
   colors: {
@@ -38,7 +38,7 @@ function App() {
     { id: 'welcome', component: <WelcomeSection /> },
     { id: 'invitation', component: <InvitationSection /> },
     { id: 'bride-gloom', component: <BrideGloomSection /> },
-    // { id: 'gallery', component: <GallerySection /> },
+    { id: 'gallery', component: <GallerySection /> },
     { id: 'register', component: <RegisterFormSection /> },
     { id: 'thanks', component: <ThanksSection /> },
   ];
