@@ -14,7 +14,7 @@ function AlbumImage({
 
   return (
     <Group ref={ref} justify='center' w='100%'>
-      <Transition mounted={inViewport} transition='scale' duration={renderDelay}>
+      <Transition mounted={inViewport} transition='fade' duration={renderDelay}>
         {(styles) => <Image style={styles} src={src} alt={src} {...props} />}
       </Transition>
     </Group>
