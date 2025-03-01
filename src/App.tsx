@@ -1,5 +1,5 @@
 import '@mantine/core/styles.css';
-import './app.css';
+import './styles.css';
 
 import { Box, createTheme, MantineProvider, ScrollArea, Stack } from '@mantine/core';
 import BrideGloomSection from './components/molecules/bride_gloom_section';

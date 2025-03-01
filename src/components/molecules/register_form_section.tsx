@@ -202,7 +202,7 @@ function RegisterFormSection() {
               right={0}
               justify='flex-start'
               align='center'
-              gap='xl'
+              gap='sm'
               px='sm'
             >
               <Stack align='center' justify='center' gap={0}>
@@ -215,7 +215,7 @@ function RegisterFormSection() {
                 </Text>
               </Stack>
               <Group justify='center'>
-                <Image src='/images/qr.jpeg' alt='qr' w='80%' p='sm' />
+                <Image src='/images/qr.jpeg' alt='qr' w='70%' p='sm' />
               </Group>
               <ActionIcon size='3rem' variant='outline' color='white' onClick={() => setActiveSection(0)}>
                 <IconArrowNarrowLeft />

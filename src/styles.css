@@ -12,3 +12,14 @@
   font-family: 'Ballet';
   src: url('./assets/fonts/Ballet/Ballet-Regular-VariableFont_opsz.ttf') format('truetype');
 }
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.test {
+  height: 120px;
+  width: 120px;
+  background-color: black;
+}
