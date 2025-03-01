@@ -2,7 +2,7 @@ import { Group, Image, MantineStyleProps, SimpleGrid, Stack, Title, Transition }
 import { useInViewport } from '@mantine/hooks';
 import BaseSection from '../atoms/base_section';
 
-const images = import.meta.glob('~/assets/images/wedding_album/*.{png,jpg,jpeg,svg,gif}');
+const images = import.meta.glob('~/assets/images/wedding_album/*.{png,jpg,jpeg,svg,gif}', { eager: true });
 const renderDuration = 300;
 
 function AlbumImage({
@@ -15,7 +15,7 @@ function AlbumImage({
   return (
     <Group ref={ref} justify='center' w='100%'>
       <Transition mounted={inViewport} transition='scale' duration={renderDelay}>
-        {(styles) => <Image style={styles} src={src} alt={src} loading='lazy' {...props} />}
+        {(styles) => <Image style={styles} src={src} alt={src} {...props} />}
       </Transition>
     </Group>
   );
@@ -29,8 +29,8 @@ function GallerySection() {
           Album ảnh cưới
         </Title>
         <SimpleGrid cols={2}>
-          {Object.entries(images).map(([name]) => (
-            <Image key={name} src={name} h={500} alt={name} loading='lazy' />
+          {Object.entries(images).map(([name, image]) => (
+            <Image key={name} src={(image as { default: string }).default} h={500} alt={name} loading='lazy' />
           ))}
         </SimpleGrid>
       </Stack>
@@ -39,8 +39,13 @@ function GallerySection() {
           Album ảnh cưới
         </Title>
         <Stack align='center'>
-          {Object.entries(images).map(([name], idx) => (
-            <AlbumImage key={name} src={name} w='80%' renderDelay={renderDuration * (idx + 1)} />
+          {Object.entries(images).map(([name, image], idx) => (
+            <AlbumImage
+              key={name}
+              src={(image as { default: string }).default}
+              w='80%'
+              renderDelay={renderDuration * (idx + 1)}
+            />
           ))}
         </Stack>
       </Stack>
