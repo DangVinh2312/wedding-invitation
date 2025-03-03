@@ -145,39 +145,21 @@ function RegisterFormSection() {
       <Stack hiddenFrom='sm' flex={1} gap={0} bg='red.4' justify='center' align='center' pos='relative'>
         {activeSection === 0 && (
           <Stack justify='flex-start' align='center' gap='xl' flex={1}>
-            <Title order={2} c='white' size='2.5rem' ff='MeaCulpa-Regular' p='xl'>
-              Tham dự đám cưới
-            </Title>
-            <Stack flex={1} w='100%' p='xl' align='center' gap='xl'>
-              <TextInput
-                ref={nameRef}
-                withAsterisk
-                size='xl'
-                label='Họ và tên'
-                leftSection={<IconUser />}
-                labelProps={{
-                  c: 'white',
-                }}
-                w='100%'
-              />
-              <TextInput
-                ref={phoneRef}
-                withAsterisk
-                size='xl'
-                label='Số điện thoại'
-                leftSection={<IconPhone />}
-                labelProps={{
-                  c: 'white',
-                }}
-                w='100%'
-              />
-              <Button size='lg' variant='outline' color='white' onClick={() => handleSubmit()}>
-                Đăng ký
-              </Button>
-              <ActionIcon size='xl' variant='outline' color='white' onClick={() => setActiveSection(1)}>
-                <IconGift />
-              </ActionIcon>
+            <Stack align='center' justify='center' gap={0}>
+              <Title order={2} c='white' size='2.5rem' ff='MeaCulpa-Regular' p='xl'>
+                Hộp mừng cưới
+              </Title>
+              <Text ff='monospace' c='white' size='sm' px='xs'>
+                Nếu có thể, bạn hãy tới tham dự Đám cưới, chung vui và Mừng cưới trực tiếp cho chúng mình. Cảm ơn bạn
+                rất nhiều!
+              </Text>
             </Stack>
+            <Group justify='center'>
+              <Image src='/images/qr.jpeg' alt='qr' w='70%' p='sm' />
+            </Group>
+            <ActionIcon size='3rem' variant='outline' color='white' onClick={() => setActiveSection(1)}>
+              <IconArrowNarrowLeft />
+            </ActionIcon>
           </Stack>
         )}
 
@@ -208,21 +190,39 @@ function RegisterFormSection() {
               gap='sm'
               px='sm'
             >
-              <Stack align='center' justify='center' gap={0}>
-                <Title order={2} c='white' size='2.5rem' ff='MeaCulpa-Regular' p='xl'>
-                  Hộp mừng cưới
-                </Title>
-                <Text ff='monospace' c='white' size='sm'>
-                  Nếu có thể, bạn hãy tới tham dự Đám cưới, chung vui và Mừng cưới trực tiếp cho chúng mình. Cảm ơn bạn
-                  rất nhiều!
-                </Text>
+              <Title order={2} c='white' size='2.5rem' ff='MeaCulpa-Regular' p='xl'>
+                Tham dự đám cưới
+              </Title>
+              <Stack flex={1} w='100%' p='xl' align='center' gap='xl'>
+                <TextInput
+                  ref={nameRef}
+                  withAsterisk
+                  size='xl'
+                  label='Họ và tên'
+                  leftSection={<IconUser />}
+                  labelProps={{
+                    c: 'white',
+                  }}
+                  w='100%'
+                />
+                <TextInput
+                  ref={phoneRef}
+                  withAsterisk
+                  size='xl'
+                  label='Số điện thoại'
+                  leftSection={<IconPhone />}
+                  labelProps={{
+                    c: 'white',
+                  }}
+                  w='100%'
+                />
+                <Button size='lg' variant='outline' color='white' onClick={() => handleSubmit()}>
+                  Đăng ký
+                </Button>
+                <ActionIcon size='xl' variant='outline' color='white' onClick={() => setActiveSection(0)}>
+                  <IconGift />
+                </ActionIcon>
               </Stack>
-              <Group justify='center'>
-                <Image src='/images/qr.jpeg' alt='qr' w='70%' p='sm' />
-              </Group>
-              <ActionIcon size='3rem' variant='outline' color='white' onClick={() => setActiveSection(0)}>
-                <IconArrowNarrowLeft />
-              </ActionIcon>
             </Stack>
           )}
         </Transition>
