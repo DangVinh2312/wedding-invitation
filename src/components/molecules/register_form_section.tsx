@@ -33,10 +33,34 @@ function RegisterFormSection() {
 
   return (
     <BaseSection>
-      <Group visibleFrom='sm' flex={1} gap={0} bg='red.4' justify='center' align='center' pos='relative'>
+      <Group visibleFrom='sm' flex={1} gap={0} bg='red.4' justify='center' align='center' pos='relative' h='100%'>
         <Stack
           style={{
             visibility: activeDebounce === 0 ? 'visible' : 'hidden',
+          }}
+          justify='flex-start'
+          align='center'
+          gap='xl'
+          h='100%'
+          w='50%'
+          px='sm'
+        >
+          <Stack align='center' gap={0}>
+            <Title order={2} c='white' size='4rem' ff='MeaCulpa-Regular' p='xl'>
+              Hộp mừng cưới
+            </Title>
+            <Text ff='monospace' c='white'>
+              Nếu có thể, bạn hãy tới tham dự Đám cưới, chung vui và Mừng cưới trực tiếp cho chúng mình. Cảm ơn bạn rất
+              nhiều!
+            </Text>
+          </Stack>
+          <Group justify='center' h='50%'>
+            <Image src='/images/qr.jpeg' alt='qr' h='100%' p='sm' />
+          </Group>
+        </Stack>
+        <Stack
+          style={{
+            visibility: activeDebounce === 1 ? 'visible' : 'hidden',
           }}
           justify='flex-start'
           align='center'
@@ -73,27 +97,6 @@ function RegisterFormSection() {
             </Button>
           </Stack>
         </Stack>
-        <Stack
-          style={{
-            visibility: activeDebounce === 1 ? 'visible' : 'hidden',
-          }}
-          justify='flex-start'
-          align='center'
-          gap='xl'
-          h='100%'
-          w='50%'
-          px='sm'
-        >
-          <Stack align='center' gap={0}>
-            <Title order={2} c='white' size='4rem' ff='MeaCulpa-Regular' p='xl'>
-              Hộp mừng cưới
-            </Title>
-            <Text ff='monospace' c='white'>
-              Nếu có thể, bạn hãy tới tham dự Đám cưới, chung vui và Mừng cưới trực tiếp cho chúng mình. Cảm ơn bạn rất
-              nhiều!
-            </Text>
-          </Stack>
-        </Stack>
         <Transition
           mounted={true}
           transition={{
@@ -118,8 +121,8 @@ function RegisterFormSection() {
               {activeDebounce === 0 && (
                 <Stack justify='center' align='center' gap={0} h='100%' w='100%'>
                   <Title order={2} c='white' size='3rem' ff='MeaCulpa-Regular' fw='lighter' p='xl'>
-                    Gửi quà mừng cưới
-                  </Title>
+                    Đăng ký tham dự
+                  </Title>{' '}
                   <ActionIcon variant='outline' color='white' size='6rem' onClick={() => setActiveSection(1)}>
                     <IconArrowNarrowLeft />
                   </ActionIcon>
@@ -128,7 +131,7 @@ function RegisterFormSection() {
               {activeDebounce === 1 && (
                 <Stack justify='center' align='center' gap={0} h='100%' w='100%'>
                   <Title order={2} c='white' size='3rem' ff='MeaCulpa-Regular' fw='lighter' p='xl'>
-                    Đăng ký tham dự
+                    Gửi quà mừng cưới
                   </Title>
                   <ActionIcon variant='outline' color='white' size='6rem' onClick={() => setActiveSection(0)}>
                     <IconArrowNarrowRight />
