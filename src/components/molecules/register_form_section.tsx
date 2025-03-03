@@ -157,9 +157,9 @@ function RegisterFormSection() {
             <Group justify='center'>
               <Image src='/images/qr.jpeg' alt='qr' w='70%' p='sm' />
             </Group>
-            <ActionIcon size='3rem' variant='outline' color='white' onClick={() => setActiveSection(1)}>
-              <IconArrowNarrowLeft />
-            </ActionIcon>
+            <Button variant='outline' color='white' onClick={() => setActiveSection(1)}>
+              Đăng ký tham dự
+            </Button>
           </Stack>
         )}
 
